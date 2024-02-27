@@ -1,30 +1,29 @@
 import './create.css';
 
-import { errorMessage, initialFocusregister, initialValuesRegister, inputValidtion } from '../../config/constants';
+import { 
+    errorMessage, 
+    initialFocusregister, 
+    initialValuesRegister, 
+    inputValidation 
+} from '../../config/constants';
 import { useForm } from '../../hooks/useForm';
 
 
 
 
 const CreateUser = ({
-    onRegister,
+    onCreateUser,
     onClose
 }) => {
 
-    const initialValues = initialValuesRegister;
-    const initialFocs = initialFocusregister;
-
-
-
-
     const { values, focus, changeHandler, onSubmit, changeFocus } = useForm(
-        initialValues,
-        initialFocs,
-        onRegister)
+        initialValuesRegister,
+        initialFocusregister,
+        onCreateUser)
 
     return (
         <div className='registerPage'>
-                <p onClick={onClose} className="close">X</p>
+            <p onClick={onClose} className="close">X</p>
             <form method='POST' className="registerForm" onSubmit={onSubmit}>
                 <h3 className='registerTop'> Create an Account</h3>
 
@@ -33,10 +32,9 @@ const CreateUser = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.name.toString()}
-                        pattern={inputValidtion.name}
                         type="text"
                         name='name'
-                        placeholder="First Name"
+                        placeholder="Name"
                         value={values.name}
                         onChange={changeHandler}
                     />
@@ -44,18 +42,20 @@ const CreateUser = ({
                 </div>
 
                 <div className='formDiv'>
+
                     <input
                         required
                         onBlur={changeFocus}
-                        focused={focus.lastname.toString()}
-                        pattern={inputValidtion.name}
+                        focused={focus.image.toString()}
+                        pattern={inputValidation.image}
                         type="text"
-                        name='lastname'
-                        placeholder="Last Name"
-                        value={values.lastname}
+                        name='image'
+                        placeholder="Image"
+                        id="image"
+                        value={values.image}
                         onChange={changeHandler}
                     />
-                    <span>{errorMessage.lastname}</span>
+                    <span>{errorMessage.image}</span>
                 </div>
 
                 <div className='formDiv'>
@@ -77,7 +77,7 @@ const CreateUser = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.phone.toString()}
-                        pattern={inputValidtion.phone}
+                        pattern={inputValidation.phone}
                         type="text"
                         name='phone'
                         placeholder="Phone"
@@ -92,7 +92,6 @@ const CreateUser = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.town.toString()}
-                        pattern={inputValidtion.town}
                         type="text"
                         name='town'
                         placeholder="Town"
@@ -107,7 +106,6 @@ const CreateUser = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.street.toString()}
-                        pattern={inputValidtion.street}
                         type="text"
                         name='street'
                         placeholder="Street"
@@ -122,7 +120,7 @@ const CreateUser = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.password.toString()}
-                        pattern={inputValidtion.password}
+                        pattern={inputValidation.password}
                         type="password"
                         name='password'
                         placeholder="Password"

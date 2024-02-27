@@ -2,7 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import CreateProduct from './components/create/CreateProduct'
 import CreateUser from './components/create/CreateUser'
-import ProductCard from './components/cardComponents/detailsCard/ProductCard';
+import ProductCard from './components/cardComponents/ProductCard';
+import UserCard from './components/cardComponents/UserCard';
 
 function App() {
 const [showUser, setShowUser]=useState(false);
@@ -31,14 +32,23 @@ const onCloseProduct=()=>{
   setShowFormProduct(false)
 }
 
+const onCreateUser=(data)=>{
+setUserData(data);
+setShowUser(true);
+setShowFormUser(false)
+}
+
 const onCreateProduct=(data)=>{
 setProductData(data)
 setShowProduct(true);
 setShowFormProduct(false);
 }
 
-const onRemove=()=>{
+const onRemoveProduct=()=>{
   setShowProduct(false)
+}
+const onRemoveUser=()=>{
+  setShowUser(false)
 }
 
   return (
@@ -53,14 +63,21 @@ const onRemove=()=>{
      </div>
      <div className="content">
      </div>
-     {showFormUser && <CreateUser onClose={onCloseUser}/>}
+     {showFormUser && <CreateUser 
+     onCreateUser={onCreateUser}
+     onClose={onCloseUser}/>}
+
      {showFormProduct && <CreateProduct 
      onCreateProduct={onCreateProduct} 
      onClose={onCloseProduct}/>}
+
      {showProduct && <ProductCard 
      product={productData}
-     onRemove={onRemove}
-     />}
+     onRemove={onRemoveProduct}/>}
+
+     {showUser && < UserCard
+     userData={userData}
+     onClose={onRemoveUser}/>}
     </>
   )
 }

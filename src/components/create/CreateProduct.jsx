@@ -4,7 +4,7 @@ import './create.css';
 
 
 
-import { errorMessage, initialFocusCreate, initialValuesCreate, inputValidtion } from '../../config/constants';
+import { errorMessage, initialFocusCreate, initialValuesCreate, inputValidation } from '../../config/constants';
 import { useForm } from '../../hooks/useForm';
 
 
@@ -54,7 +54,7 @@ const CreateProduct = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.image.toString()}
-                        pattern={inputValidtion.image}
+                        pattern={inputValidation.image}
                         type="text"
                         name='image'
                         placeholder="Image"
@@ -71,7 +71,6 @@ const CreateProduct = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.price.toString()}
-
                         type="number"
                         name='price'
                         min={1}
@@ -89,8 +88,7 @@ const CreateProduct = ({
                         required
                         onBlur={changeFocus}
                         focused={focus.description.toString()}
-                        pattern={inputValidtion.description}
-                        type="text"
+                        type="string"
                         name='description'
                         placeholder="Description "
                         id="description"

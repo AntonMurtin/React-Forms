@@ -49,3 +49,13 @@ ul>li>p:hover{
   color: aqua;
 }
 
+@media (max-width:650px){
+  .menu{
+    margin-right: 30px;
+  }
+  ul>li{
+    margin-left: 30px; 
+    font-size: 20px;
+ 
+  }
+}
